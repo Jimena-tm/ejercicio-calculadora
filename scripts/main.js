@@ -12,6 +12,7 @@ document.getElementById("suma").addEventListener("click",o1);
 document.getElementById("resta").addEventListener("click",o2);
 document.getElementById("multiplica").addEventListener("click",o3);
 document.getElementById("divide").addEventListener("click",o4);
+document.getElementById("showresult").addEventListener("click",showresult);
 
 function n1 () {
     let actual = document.getElementById('resultado').innerHTML;
@@ -95,4 +96,31 @@ function o4 () {
     let actual = document.getElementById('resultado').innerHTML;
     let sumado = document.getElementById("divide").innerHTML;
     document.getElementById('resultado').innerHTML = actual + " " + sumado + " "
+}
+
+function showresult () {
+    let actual = document.getElementById('resultado').innerHTML;
+    let suma = actual.indexOf("+");
+    let resta = actual.indexOf("-");
+    let div = actual.indexOf("÷");
+    let mult = actual.indexOf("x");
+     if (suma !== -1) {
+         arr = actual.split("+",2);
+         res = parseInt(arr[0]) + parseInt(arr[1]);
+         document.getElementById("resultado").innerHTML = res;
+     } else if (resta !== -1) {
+        arr = actual.split("-",2);
+        res = parseInt(arr[0]) - parseInt(arr[1]);
+        document.getElementById("resultado").innerHTML = res;
+
+     } else if (div !== -1) {
+        arr = actual.split("÷",2);
+        res = parseInt(arr[0]) / parseInt(arr[1]);
+        document.getElementById("resultado").innerHTML = res;
+
+     } else if (mult !== -1) {
+        arr = actual.split("x",2);
+        res = parseInt(arr[0]) * parseInt(arr[1]);
+        document.getElementById("resultado").innerHTML = res;
+     }
 }
